@@ -1,12 +1,13 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
-#: Fonts {{{
+# Fonts {{{
 
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
- font_family      SauceCodePro Nerd Font
+ # font_family      SauceCodePro Nerd Font
+ font_family     Iosevka Nerd Font
 # bold_font        auto
 # italic_font      auto
 # bold_italic_font auto
@@ -239,7 +240,7 @@
 #: working with applications that use colors that do not contrast well
 #: with your preferred color scheme.
 
-#: }}}
+# }}}
 
 #: Cursor customization {{{
 
@@ -260,7 +261,7 @@
 #: special keyword: background. Note that if cursor is set to none
 #: then this option is ignored.
 
-# cursor_shape block
+cursor_shape block
 
 #: The cursor shape can be one of block, beam, underline. Note that
 #: when reloading the config this will be changed only if the cursor
@@ -294,7 +295,7 @@
 
 #: Scrollback {{{
 
-# scrollback_lines 2000
+scrollback_lines 2000
 
 #: Number of lines of history to keep in memory for scrolling back.
 #: Memory is allocated on demand. Negative numbers are (effectively)
@@ -1058,13 +1059,11 @@
 # inactive_tab_font_style normal
 
 #: Tab bar colors and styles.
-
- tab_bar_background #000000
+# tab_bar_background #000000
 
 #: Background color for the tab bar. Defaults to using the terminal
 #: background color.
-
- tab_bar_margin_color none
+# tab_bar_margin_color none
 
 #: Color for the tab bar margin area. Defaults to using the terminal
 #: background color for margins above and below the tab bar. For side
@@ -1080,7 +1079,7 @@
 
 #: The foreground and background colors.
 
- background_opacity 1.0
+ background_opacity 1
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1105,7 +1104,7 @@
 #: dynamic_background_opacity was enabled in the original config.
 
 #: backgroundstuff
- background_blur 40
+ background_blur 0
 
 #: Set to a positive value to enable background blur (blurring of the
 #: visuals behind a transparent window) on platforms that support it.
@@ -1136,7 +1135,7 @@
 #: decrease_background_opacity) or the remote control facility.
 #: Changing this option by reloading the config is not supported.
 
- background_tint 0.8
+ background_tint 0
 
 #: How much to tint the background image by the background color. This
 #: option makes it easier to read the text. Tinting is done using the
@@ -1405,7 +1404,7 @@
 #: builds do not do update checking. Changing this option by reloading
 #: the config is not supported.
 
-#  startup_session ~/.config/kitty/kitty-startup.session\
+startup_session ~/.config/kitty/kitty-startup.session
 
 #: Path to a session file to use for all kitty instances. Can be
 #: overridden by using the kitty --session =none command line option
@@ -2387,22 +2386,29 @@
 
 #: }}}
 
-bell_on_tab             yes
+#bell_on_tab             yes
 tab_bar_edge            top
-tab_title_template      {index}: {title}
+tab_bar_style powerline
 focus_follows_mouse     yes
-active_tab_foreground   #000
-active_tab_background   #73D216
+# active_tab_foreground   #000
+# active_tab_background   #73D216
 active_tab_font_style   italic
-inactive_tab_foreground #444
-inactive_tab_background #999
+# inactive_tab_foreground #444
+# inactive_tab_background #999
 inactive_tab_font_style normal
 
-include ./kitty-themes/themes/Atom.conf 
-
+include ./kitty-themes/themes/Chalkboard.conf
+kitty_mod ctrl+shift
+map kitty_mod+t     new_tab_with_cwd
 map command+1 goto_tab 1
 map command+2 goto_tab 2
 map command+3 goto_tab 3
 map command+3 goto_tab 4
 map command+3 goto_tab 5
-map cmd+t new_tab_with_cwd
+tab_bar_min_tabs 2
+map kitty_mod+l layout_action rotate
+# run this to change themes kitty +kitten themes
+# BEGIN_KITTY_THEME
+# Apprentice
+include current-theme.conf
+# END_KITTY_THEME
